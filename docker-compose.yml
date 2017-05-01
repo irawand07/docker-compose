@@ -1,0 +1,18 @@
+version: '2'
+services:
+  php:
+    image: khozin06/php-tcc
+    ports:
+      - "80:80"
+      - "443:443"
+    volumes:
+      - ./app:/var/www/html
+    links:
+      - db
+
+  db:
+    image: suweda72/db-tcc
+    volumes:
+     - ./db:/var/lib/mysql
+    environment:
+     - MYSQL_ROOT_PASSWORD=fiki
